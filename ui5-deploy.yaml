@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
+
+specVersion: "2.6"
+metadata:
+  name: tst.zicfactserv3
+type: application
+builder:
+  resources:
+    excludes:
+      - /test/**
+      - /localService/**
+  customTasks:
+    - name: deploy-to-abap
+      afterTask: generateCachebusterInfo
+      configuration:
+        target:
+          url: http://vhcalnplci:8000
+          client: "001"
+        app:
+          name: ZICFACTSERV03
+          description: ICF Activated Services
+          package: ZICFACTSRV2
+          transport: NPLK900077
+        exclude:
+          - /test/
